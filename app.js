@@ -1,14 +1,14 @@
 document.addEventListener("DOMContentLoaded",() => {
     const form=document.querySelector("form");
     const bookingList=document.getElementById("booking-list");
-    // Kohëzgjatja e secilit shërbim në minuta
+   
 const SERVICE_DURATION = {
   "qethje": 30,
   "rruajtje": 15,
   "paketa": 60
 };
 
-// Funksion që konverton orën "HH:MM" në minuta
+
 function timeToMinutes(time) {
   const [h, m] = time.split(":").map(Number);
   return h * 60 + m;
@@ -36,7 +36,7 @@ clearBtn.addEventListener("click", () => {
     function renderBookings(){
        let bookings = loadBookings();
     
-    // Rendit terminet nga më e afërta te më e larguara
+   
     bookings.sort((a, b) => {
         const dateTimeA = new Date(a.date + "T" + a.time);
         const dateTimeB = new Date(b.date + "T" + b.time);
@@ -50,7 +50,7 @@ clearBtn.addEventListener("click", () => {
         }
 
         
-        bookings.forEach((b,i)=> {
+        bookings.forEach((b)=> {
             const div=document.createElement("div");
             div.classList.add("booking-item");
             div.innerHTML=`
@@ -96,3 +96,4 @@ bookings.push({ name, phone, service, date, time });
 saveBookings(bookings);
 renderBookings();
 });
+
