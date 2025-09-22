@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Barber Bookings</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Admin Panel - Të gjitha terminet</h1>
+  <div id="admin-booking-list"></div>
+  <button id="clear-btn">Fshij të gjitha terminet</button>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const adminList = document.getElementById("admin-booking-list");
+      const clearBtn = document.getElementById("clear-btn");
+
+      function loadBookings() {
+        const data = localStorage.getItem("bookings");
+        return data ? JSON.parse(data) : [];
+      }
+
+      function renderBookings() {
+        const bookings = loadBookings();
+
+        // Rendit sipas datës dhe orës
+        bookings.sort((a, b) => new Date(a.date + "T" + a.time) - new Date(b.date + "T" + b.time));
+
+        adminList.innerHTML = "";
+        if (bookings.length === 0) {
+          adminList.innerHTML = "<p>Nuk ka termine të rezervuara.</p>";
+          return;
+        }
+
+        bookings.forEach((b, i) => {
+          const div = document.createElement("div");
+          div.classList.add("booking-item");
+          div.innerHTML = `
+            <strong>${b.name}</strong> (${b.phone})<br>
+            Shërbimi: ${b.service}<br>
+            Data: ${b.date} ora ${b.time}
+          `;
+          adminList.appendChild(div);
+        });
+      }
+
+      clearBtn.addEventListener("click", () => {
+        if (confirm("A jeni i sigurt që doni të fshini të gjitha terminet?")) {
+          localStorage.removeItem("bookings");
+          renderBookings();
+        }
+      });
+
+      renderBookings();
+    });
+  </script>
+</body>
+</html>
