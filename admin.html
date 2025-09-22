@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Panel - Barber Bookings</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Admin Panel - Të gjitha terminet</h1>
+  <h1>Admin Panel - Terminet</h1>
   <div id="admin-booking-list"></div>
-  <button id="clear-btn">Fshij të gjitha terminet</button>
+  <button id="clear-btn">🗑️ Fshij të gjitha terminet</button>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -24,7 +24,6 @@
       function renderBookings() {
         const bookings = loadBookings();
 
-        // Rendit sipas datës dhe orës
         bookings.sort((a, b) => new Date(a.date + "T" + a.time) - new Date(b.date + "T" + b.time));
 
         adminList.innerHTML = "";
@@ -33,7 +32,7 @@
           return;
         }
 
-        bookings.forEach((b, i) => {
+        bookings.forEach((b) => {
           const div = document.createElement("div");
           div.classList.add("booking-item");
           div.innerHTML = `
