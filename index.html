@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="sq">
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gionti Cuts-Online Bookings</title>
+        
+    </head>
+   
+    <body>
+        
+        <header>
+            <h1>Gioniti Cuts</h1>
+            <p>Rezervo terminin tend online</p>
+        </header>
+
+        <main>
+            <section>
+                <h2>Rezervo nje termin</h2>
+                <form>
+                    <label for="name">Emri:</label>
+                    <input type="text" id="name" name="name" required><br><br>
+
+                    <label for="phone">Telefoni:</label>
+                    <input type="text" id="phone" name="phone" required><br><br>
+
+                    <label for="service">Sherbimi:</label>
+                    <select id="service" name="service">
+                        <option value="qethje">Qethje flokesh</option>
+                        <option value="rruajtje">Rruajtje mjekre</option>
+                        <option value="paketa">Paketa (floke+mjeker)</option>
+                    </select><br><br>
+
+                    <label for="date">Data</label>
+                    <input type="date" id="date" name="date" required><br><br>
+
+                    <label for="time">Ora:</label>
+                    <input type="time" id="time" name="time" required><br><br>
+
+                    <button type="submit">Rezervo</button>
+                </form>
+            </section>
+
+            <section>
+                <h2>Terminet e tua</h2>
+                <div id="booking-list"></div>
+            </section>
+
+            <section>
+  <h2>Terminet e tua</h2>
+  <div id="booking-list"></div>
+  <button id="clear-btn">Fshij të gjitha terminet</button>
+</section>
+        </main>
+        <footer>
+            <p>&copy; 2025 Berber Shop</p>
+        </footer>
+         <script src="app.js"></script>
+    </body>
+</html>
