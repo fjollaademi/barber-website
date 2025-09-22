@@ -75,11 +75,10 @@ clearBtn.addEventListener("click", () => {
         alert("Ju lutem plotesoni te gjitha fushat.");
         return;
     }
-    const bookings = loadBookings();
+   const bookings = loadBookings();
 
-    const newStart = timeToMinutes(time);
-  
-    const newEnd = newStart + SERVICE_DURATION[service];
+const newStart = timeToMinutes(time);
+const newEnd = newStart + SERVICE_DURATION[service];
 
 const conflict = bookings.some(b => {
   const existingStart = timeToMinutes(b.time);
@@ -88,20 +87,12 @@ const conflict = bookings.some(b => {
 });
 
 if (conflict) {
-  alert("Ky orar është i zënë! Zgjidh një tjetër.");
-  return; // ndalon shtimin
+  alert("Ky orar është i zënë! Ju lutem zgjidhni një tjetër.");
+  return;
 }
 
-
- const newBooking = { name, phone, service, date, time };
-// Nëse nuk ka konflikt, shto rezervimin
-bookings.push(newBooking);
+// Nëse nuk ka konflikt
+bookings.push({ name, phone, service, date, time });
 saveBookings(bookings);
-
-    
-    form.reset();
-    renderBookings();
-    });
-    renderBookings();
-
+renderBookings();
 });
