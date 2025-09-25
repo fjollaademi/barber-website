@@ -1,56 +1,95 @@
+/* styles.css */
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background: #f4f4f9;
-  color: #333;
-  padding: 20px;
+  background: linear-gradient(135deg, #1c1c1c, #2a2a2a);
+  color: #f1f1f1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 20px;
+  min-height: 100vh;
 }
 
+/* Titulli */
 h1 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #e0b973; /* Ngjyrë ari luksoze */
   text-align: center;
-  color: #222;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
 }
 
+/* Forma */
 form {
+  background: #2e2e2e;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
   max-width: 400px;
-  margin: 20px auto;
-  background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-label {
-  display: block;
-  margin-top: 10px;
-  font-weight: bold;
-}
-
-input, select, button {
   width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-button {
-  margin-top: 15px;
-  background: #0077cc;
-  color: #fff;
-  font-size: 16px;
+/* Label */
+label {
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: #f1f1f1;
+}
+
+/* Input & Select */
+input, select {
+  padding: 12px;
+  border-radius: 10px;
   border: none;
+  outline: none;
+  background: #444;
+  color: #f1f1f1;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+  background: #555;
+  border: 1px solid #e0b973;
+  box-shadow: 0 0 8px #e0b973;
+}
+
+/* Butoni */
+button {
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #e0b973;
+  color: #1c1c1c;
+  font-size: 1.1rem;
+  font-weight: bold;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 button:hover {
-  background: #005fa3;
+  background: #f1c75c;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
-.booking-item {
-  background: #fff;
-  margin: 10px auto;
-  padding: 10px;
-  border-radius: 8px;
-  border-left: 5px solid #0077cc;
+/* Teksti poshtë */
+p {
+  margin-top: 20px;
+  font-size: 0.95rem;
+  color: #cfcfcf;
+  text-align: center;
   max-width: 500px;
+  line-height: 1.5;
 }
