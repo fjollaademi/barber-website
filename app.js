@@ -1,5 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("booking-form");
+  const messageBox = document.createElement("div");
+  messageBox.style.marginTop = "15px";
+  form.after(messageBox);
 
   const SERVICE_DURATION = {
     "Prerje": 30,
@@ -17,8 +20,25 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function timeToMinutes(time) {
-    const [h, m] = time.split(":").map(Number);
+    // siguro që merret vetëm HH:MM
+    const [h, m] = time.slice(0, 5).split(":").map(Number);
     return h * 60 + m;
+  }
+
+  function showMessage(text, type = "error") {
+    messageBox.textContent = text;
+    messageBox.style.padding = "10px";
+    messageBox.style.borderRadius = "8px";
+    messageBox.style.fontWeight = "500";
+    messageBox.style.textAlign = "center";
+
+    if (type === "success") {
+      messageBox.style.background = "#2e7d32";
+      messageBox.style.color = "#fff";
+    } else {
+      messageBox.style.background = "#c62828";
+      messageBox.style.color = "#fff";
+    }
   }
 
   form.addEventListener("submit", (e) => {
@@ -31,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const time = document.getElementById("time").value;
 
     if (!name || !phone || !date || !time) {
-      alert("Ju lutem plotësoni të gjitha fushat.");
+      showMessage("Ju lutem plotësoni të gjitha fushat.");
       return;
     }
 
@@ -47,14 +67,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     if (conflict) {
-      alert("Ky orar është i zënë! Ju lutem zgjidhni një tjetër.");
+      showMessage("Ky orar është i zënë! Ju lutem zgjidhni një tjetër.");
       return;
     }
 
     bookings.push({ name, phone, service, date, time });
     saveBookings(bookings);
 
-    alert("Rezervimi u bë me sukses!");
+    showMessage("Rezervimi u bë me sukses!", "success");
     form.reset();
   });
 });
