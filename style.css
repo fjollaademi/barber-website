@@ -93,3 +93,57 @@ p {
   max-width: 500px;
   line-height: 1.5;
 }
+
+/* Stili për tabelën e admin panelit */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background: #2e2e2e;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+th, td {
+  padding: 14px 18px; /* hapsirë më e madhe */
+  text-align: left;
+}
+
+th {
+  background: #3a3a3a;
+  color: #e0b973;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+td {
+  font-size: 0.95rem;
+  color: #f1f1f1;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transition: 0.3s;
+}
+
+/* Butoni për fshirje */
+.btn-danger {
+  background: #c62828;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.btn-danger:hover {
+  background: #e53935;
+}
+
