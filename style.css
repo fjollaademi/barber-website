@@ -147,3 +147,14 @@ tr:hover {
   background: #e53935;
 }
 
+/* Stili për titullin h2 në index */
+h2 {
+  font-family: 'Arial', sans-serif;
+  font-size: 2.2rem;
+  color: #e0b973;          /* Ngjyra ari elegante */
+  text-align: center;
+  margin: 20px 0 40px 0;   /* Hapsirë sipër dhe poshtë */
+  letter-spacing: 2px;      /* Hapësirë mes shkronjave */
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.7); /* Hije elegante */
+}
+
