@@ -62,12 +62,12 @@
         bookings.forEach((b, i) => {
           table += `
             <tr>
-              <td>${b.name}</td>
-              <td>${b.phone}</td>
-              <td>${b.service}</td>
-              <td>${b.date}</td>
-              <td>${b.time}</td>
-              <td><button class="btn btn-danger" data-index="${i}">Fshi</button></td>
+              <td data-label="Emri">${b.name}</td>
+              <td data-label="Telefoni">${b.phone}</td>
+              <td data-label="Shërbimi">${b.service}</td>
+              <td data-label="Data">${b.date}</td>
+              <td data-label="Ora">${b.time}</td>
+              <td data-label="Veprime"><button class="btn btn-danger" data-index="${i}">Fshi</button></td>
             </tr>
           `;
         });
