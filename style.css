@@ -1,5 +1,3 @@
-/* styles.css */
-
 /* Reset */
 * {
   margin: 0;
@@ -158,4 +156,48 @@ h2 {
   text-shadow: 2px 2px 5px rgba(0,0,0,0.7); /* Hije elegante */
 }
 
+/* --- Shtesë për responsive në celular --- */
+@media (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+    width: 100%;
+  }
 
+  thead tr {
+    display: none; /* fsheh header për ekran të vogël */
+  }
+
+  tr {
+    margin-bottom: 15px;
+    background: #3a3a3a;
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  td {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 10px;
+    text-align: right;
+    font-size: 0.9rem;
+    border: none;
+  }
+
+  td::before {
+    content: attr(data-label);
+    flex: 1;
+    text-align: left;
+    font-weight: 600;
+    color: #e0b973;
+  }
+
+  .btn-danger {
+    padding: 8px 10px;
+    font-size: 0.85rem;
+  }
+
+  button#clear-btn {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
