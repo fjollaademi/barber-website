@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sq">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Panel - Barber Bookings</title>
+  <title>Admin Panel - Terminet</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Admin Panel - Terminet</h1>
+  <h1>Terminet e Rezervuara</h1>
+
   <div id="admin-booking-list"></div>
-  <button id="clear-btn">🗑️ Fshij të gjitha terminet</button>
+  <button id="clear-btn">Fshij të gjitha terminet</button>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -21,26 +22,67 @@
         return data ? JSON.parse(data) : [];
       }
 
-      function renderBookings() {
-        const bookings = loadBookings();
+      function saveBookings(bookings) {
+        localStorage.setItem("bookings", JSON.stringify(bookings));
+      }
 
+      function deleteBooking(index) {
+        const bookings = loadBookings();
+        bookings.splice(index, 1);
+        saveBookings(bookings);
+        renderBookings();
+      }
+
+      function renderBookings() {
+        let bookings = loadBookings();
+
+        // Rendit sipas datës dhe orës
         bookings.sort((a, b) => new Date(a.date + "T" + a.time) - new Date(b.date + "T" + b.time));
 
-        adminList.innerHTML = "";
         if (bookings.length === 0) {
           adminList.innerHTML = "<p>Nuk ka termine të rezervuara.</p>";
           return;
         }
 
-        bookings.forEach((b) => {
-          const div = document.createElement("div");
-          div.classList.add("booking-item");
-          div.innerHTML = `
-            <strong>${b.name}</strong> (${b.phone})<br>
-            Shërbimi: ${b.service}<br>
-            Data: ${b.date} ora ${b.time}
+        let table = `
+          <table>
+            <thead>
+              <tr>
+                <th>Emri</th>
+                <th>Telefoni</th>
+                <th>Shërbimi</th>
+                <th>Data</th>
+                <th>Ora</th>
+                <th>Veprime</th>
+              </tr>
+            </thead>
+            <tbody>
+        `;
+
+        bookings.forEach((b, i) => {
+          table += `
+            <tr>
+              <td>${b.name}</td>
+              <td>${b.phone}</td>
+              <td>${b.service}</td>
+              <td>${b.date}</td>
+              <td>${b.time}</td>
+              <td><button class="btn btn-danger" data-index="${i}">Fshi</button></td>
+            </tr>
           `;
-          adminList.appendChild(div);
+        });
+
+        table += `</tbody></table>`;
+        adminList.innerHTML = table;
+
+        // Event për butonat "Fshi"
+        document.querySelectorAll(".btn-danger").forEach(btn => {
+          btn.addEventListener("click", (e) => {
+            const index = e.target.getAttribute("data-index");
+            if (confirm("A jeni i sigurt që doni të fshini këtë termin?")) {
+              deleteBooking(index);
+            }
+          });
         });
       }
 
@@ -56,3 +98,4 @@
   </script>
 </body>
 </html>
+
