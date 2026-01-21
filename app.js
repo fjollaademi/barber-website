@@ -5,9 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
   form.after(messageBox);
 
   const SERVICE_DURATION = {
-    "Prerje": 30,
-    "Rruajtje": 15,
-    "Prerje + Rruajtje": 45
+    "Haircut": 30,
+    "Shave": 15,
+    "Haircut + Shave": 45
   };
 
   function loadBookings() {
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function timeToMinutes(time) {
-    // siguro që merret vetëm HH:MM
+    
     const [h, m] = time.slice(0, 5).split(":").map(Number);
     return h * 60 + m;
   }
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const time = document.getElementById("time").value;
 
     if (!name || !phone || !date || !time) {
-      showMessage("Ju lutem plotësoni të gjitha fushat.");
+      showMessage("Please complete all data.");
       return;
     }
 
@@ -67,14 +67,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     if (conflict) {
-      showMessage("Ky orar është i zënë! Ju lutem zgjidhni një tjetër.");
+      showMessage("The selected time is unavailable! Plese choose another one.");
       return;
     }
 
     bookings.push({ name, phone, service, date, time });
     saveBookings(bookings);
 
-    showMessage("Rezervimi u bë me sukses!", "success");
+    showMessage("The reservesion success!", "success");
     form.reset();
   });
 });
+
