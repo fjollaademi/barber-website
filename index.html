@@ -2,41 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>Barber Appointment Booking</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Barber Website</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h2>Barber Website</h2>
-  <h1>Reserve</h1>
+
+  <h2>Barber Shop</h2>
+  <h1>Book an Appointment</h1>
+
   <form id="booking-form">
-    <label>Name:</label>
+    <label>Full Name</label>
     <input type="text" id="name" required>
-    
-    <label>Phone Number: </label>
+
+    <label>Phone Number</label>
     <input type="text" id="phone" required>
-    
-    <label>Service:</label>
+
+    <label>Service</label>
     <select id="service" required>
       <option value="Haircut">Haircut (30 min)</option>
       <option value="Shave">Shave (15 min)</option>
-      <option value="Haircut + Shave">Haircut + Shave (45 min)</option>
+      <option value="Haircut + Shave">Haircut & Shave (45 min)</option>
     </select>
-    
-    <label>Date:</label>
+
+    <label>Date</label>
     <input type="date" id="date" required>
-    
-    <label>Time:</label>
+
+    <label>Time</label>
     <input type="time" id="time" required>
-    
-    <button type="submit">Rezervo</button>
+
+    <button type="submit">Book Now</button>
   </form>
 
-  <p>Appointments will be confirmed if they are availabe. If the selected time is unavailable,please choose another.</p>
+  <p>
+    Appointments are confirmed based on availability.
+    If your selected time is unavailable, please choose another.
+  </p>
 
   <script src="app.js"></script>
 </body>
 </html>
+
 
 
 
