@@ -1,4 +1,3 @@
-/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -7,118 +6,108 @@
 }
 
 body {
-  background: linear-gradient(135deg, #1c1c1c, #2a2a2a);
-  color: #f1f1f1;
+  background: linear-gradient(135deg, #141414, #2b2b2b);
+  color: #f5f5f5;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 50px 20px;
-  min-height: 100vh;
+  padding: 40px 20px;
 }
 
-/* Titulli */
+h2 {
+  font-size: 2.3rem;
+  color: #d4af37;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+  text-shadow: 0 0 8px rgba(0,0,0,0.6);
+}
+
 h1 {
-  font-size: 2.5rem;
-  margin-bottom: 30px;
-  color: #e0b973; /* Ngjyrë ari luksoze */
+  font-size: 2.6rem;
+  margin-bottom: 35px;
+  color: #f1c75c;
   text-align: center;
-  text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
 }
 
-/* Forma */
 form {
-  background: #2e2e2e;
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-  max-width: 400px;
+  background: #1f1f1f;
+  padding: 30px;
+  border-radius: 18px;
   width: 100%;
+  max-width: 420px;
   display: flex;
   flex-direction: column;
   gap: 15px;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.6);
 }
 
-/* Label */
 label {
-  font-weight: 500;
-  margin-bottom: 5px;
-  color: #f1f1f1;
+  font-size: 0.95rem;
+  color: #ddd;
 }
 
-/* Input & Select */
 input, select {
-  padding: 12px;
+  padding: 12px 14px;
   border-radius: 10px;
   border: none;
   outline: none;
-  background: #444;
-  color: #f1f1f1;
+  background: #2f2f2f;
+  color: #fff;
   font-size: 1rem;
-  transition: all 0.3s ease;
 }
 
 input:focus, select:focus {
-  background: #555;
-  border: 1px solid #e0b973;
-  box-shadow: 0 0 8px #e0b973;
+  box-shadow: 0 0 10px #d4af37;
 }
 
-/* Butoni */
 button {
-  padding: 12px;
-  border: none;
-  border-radius: 10px;
-  background: #e0b973;
-  color: #1c1c1c;
+  margin-top: 10px;
+  padding: 14px;
   font-size: 1.1rem;
   font-weight: bold;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #d4af37, #f1c75c);
+  color: #1b1b1b;
   cursor: pointer;
   transition: 0.3s;
 }
 
 button:hover {
-  background: #f1c75c;
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
 }
 
-/* Teksti poshtë */
 p {
-  margin-top: 20px;
-  font-size: 0.95rem;
-  color: #cfcfcf;
+  margin-top: 25px;
+  max-width: 520px;
   text-align: center;
-  max-width: 500px;
+  font-size: 0.95rem;
+  color: #ccc;
   line-height: 1.5;
 }
 
-/* Stili për tabelën e admin panelit */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin: 20px 0;
-  background: #2e2e2e;
-  border-radius: 12px;
+  background: #1f1f1f;
+  border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 
 th, td {
-  padding: 14px 18px; /* hapsirë më e madhe */
+  padding: 14px;
   text-align: left;
 }
 
 th {
-  background: #3a3a3a;
-  color: #e0b973;
-  font-size: 1rem;
-  font-weight: 600;
+  background: #2b2b2b;
+  color: #f1c75c;
 }
 
 td {
-  font-size: 0.95rem;
-  color: #f1f1f1;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 tr:last-child td {
@@ -126,78 +115,64 @@ tr:last-child td {
 }
 
 tr:hover {
-  background: rgba(255, 255, 255, 0.05);
-  transition: 0.3s;
+  background: rgba(255,255,255,0.05);
 }
 
-/* Butoni për fshirje */
 .btn-danger {
   background: #c62828;
   color: #fff;
-  padding: 6px 12px;
-  border-radius: 8px;
   border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 0.9rem;
 }
 
 .btn-danger:hover {
   background: #e53935;
 }
 
-/* Stili për titullin h2 në index */
-h2 {
-  font-family: 'Arial', sans-serif;
-  font-size: 2.2rem;
-  color: #e0b973;          /* Ngjyra ari elegante */
-  text-align: center;
-  margin: 20px 0 40px 0;   /* Hapsirë sipër dhe poshtë */
-  letter-spacing: 2px;      /* Hapësirë mes shkronjave */
-  text-shadow: 2px 2px 5px rgba(0,0,0,0.7); /* Hije elegante */
+#clear-btn {
+  margin-top: 20px;
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: none;
+  background: #c62828;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-/* --- Shtesë për responsive në celular --- */
+#clear-btn:hover {
+  background: #e53935;
+}
+
 @media (max-width: 768px) {
   table, thead, tbody, th, td, tr {
     display: block;
     width: 100%;
   }
 
-  thead tr {
-    display: none; /* fsheh header për ekran të vogël */
+  thead {
+    display: none;
   }
 
   tr {
     margin-bottom: 15px;
-    background: #3a3a3a;
+    background: #2b2b2b;
+    padding: 12px;
     border-radius: 10px;
-    padding: 10px;
   }
 
   td {
     display: flex;
     justify-content: space-between;
-    padding: 8px 10px;
-    text-align: right;
-    font-size: 0.9rem;
-    border: none;
+    padding: 8px;
   }
 
   td::before {
     content: attr(data-label);
-    flex: 1;
-    text-align: left;
+    color: #f1c75c;
     font-weight: 600;
-    color: #e0b973;
-  }
-
-  .btn-danger {
-    padding: 8px 10px;
-    font-size: 0.85rem;
-  }
-
-  button#clear-btn {
-    width: 100%;
-    margin-top: 10px;
   }
 }
+
