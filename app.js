@@ -10,72 +10,63 @@ document.addEventListener("DOMContentLoaded", () => {
     "Haircut + Shave": 45
   };
 
-  function loadBookings() {
-    const data = localStorage.getItem("bookings");
-    return data ? JSON.parse(data) : [];
+  function getBookings() {
+    return JSON.parse(localStorage.getItem("bookings") || "[]");
   }
 
-  function saveBookings(bookings) {
-    localStorage.setItem("bookings", JSON.stringify(bookings));
+  function saveBookings(data) {
+    localStorage.setItem("bookings", JSON.stringify(data));
   }
 
-  function timeToMinutes(time) {
-    
-    const [h, m] = time.slice(0, 5).split(":").map(Number);
+  function toMinutes(time) {
+    const [h, m] = time.split(":").map(Number);
     return h * 60 + m;
   }
 
-  function showMessage(text, type = "error") {
+  function showMessage(text, success = false) {
     messageBox.textContent = text;
     messageBox.style.padding = "10px";
-    messageBox.style.borderRadius = "8px";
-    messageBox.style.fontWeight = "500";
+    messageBox.style.borderRadius = "10px";
     messageBox.style.textAlign = "center";
-
-    if (type === "success") {
-      messageBox.style.background = "#2e7d32";
-      messageBox.style.color = "#fff";
-    } else {
-      messageBox.style.background = "#c62828";
-      messageBox.style.color = "#fff";
-    }
+    messageBox.style.background = success ? "#2e7d32" : "#c62828";
+    messageBox.style.color = "#fff";
   }
 
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", e => {
     e.preventDefault();
 
-    const name = document.getElementById("name").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-    const service = document.getElementById("service").value;
-    const date = document.getElementById("date").value;
-    const time = document.getElementById("time").value;
+    const name = name.value.trim();
+    const phone = phone.value.trim();
+    const service = service.value;
+    const date = date.value;
+    const time = time.value;
 
     if (!name || !phone || !date || !time) {
-      showMessage("Please complete all data.");
+      showMessage("Please fill in all fields.");
       return;
     }
 
-    const newStart = timeToMinutes(time);
-    const newEnd = newStart + SERVICE_DURATION[service];
-    const bookings = loadBookings();
+    const start = toMinutes(time);
+    const end = start + SERVICE_DURATION[service];
+    const bookings = getBookings();
 
     const conflict = bookings.some(b => {
       if (b.date !== date) return false;
-      const existingStart = timeToMinutes(b.time);
-      const existingEnd = existingStart + SERVICE_DURATION[b.service];
-      return newStart < existingEnd && newEnd > existingStart;
+      const s = toMinutes(b.time);
+      const e = s + SERVICE_DURATION[b.service];
+      return start < e && end > s;
     });
 
     if (conflict) {
-      showMessage("The selected time is unavailable! Plese choose another one.");
+      showMessage("Selected time is unavailable. Please choose another.");
       return;
     }
 
     bookings.push({ name, phone, service, date, time });
     saveBookings(bookings);
-
-    showMessage("The reservesion success!", "success");
+    showMessage("Appointment booked successfully!", true);
     form.reset();
   });
 });
+
 
