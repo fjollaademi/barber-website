@@ -35,11 +35,11 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", e => {
     e.preventDefault();
 
-    const name = name.value.trim();
-    const phone = phone.value.trim();
-    const service = service.value;
-    const date = date.value;
-    const time = time.value;
+    const name = document.getElementById("name").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const service = document.getElementById("service").value;
+    const date = document.getElementById("date").value;
+    const time = document.getElementById("time").value;
 
     if (!name || !phone || !date || !time) {
       showMessage("Please fill in all fields.");
@@ -64,9 +64,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     bookings.push({ name, phone, service, date, time });
     saveBookings(bookings);
+
     showMessage("Appointment booked successfully!", true);
     form.reset();
   });
 });
-
 
