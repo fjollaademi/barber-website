@@ -35,11 +35,11 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", e => {
     e.preventDefault();
 
-    const name = document.getElementById("name").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-    const service = document.getElementById("service").value;
-    const date = document.getElementById("date").value;
-    const time = document.getElementById("time").value;
+    const name = document.getElementById("input-name").value.trim();
+    const phone = document.getElementById("input-phone").value.trim();
+    const service = document.getElementById("input-service").value;
+    const date = document.getElementById("input-date").value;
+    const time = document.getElementById("input-time").value;
 
     if (!name || !phone || !date || !time) {
       showMessage("Please fill in all fields.");
@@ -69,4 +69,5 @@ document.addEventListener("DOMContentLoaded", () => {
     form.reset();
   });
 });
+
 
